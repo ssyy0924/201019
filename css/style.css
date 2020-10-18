@@ -1,0 +1,92 @@
+body {
+	background-color: black;
+overflow-x:hidden; overflow-y:hidden;}
+
+@keyframes turn {
+  from { transform: rotate3d(0, 0, 0, 0); }
+  to { transform: rotate3d(1, 0, 0, 360deg); }
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  perspective: 500px;
+  margin-left: 550px;
+  margin-top: 150px;
+  transform: rotate(55deg);
+}
+
+.cube {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: turn 25s linear infinite;
+}
+
+.face {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  display: flex;
+  transition: transform 500ms;
+}
+
+.front {
+	background-image: url(../image/5.png);
+	opacity: 0.3;
+	width: 400px;
+	height: 200px;
+  transform: translateZ(100px);
+}
+
+.back {
+	background-image: url(../image/2.png);
+	width: 400px;
+	height: 200px;
+  transform: translateZ(-100px) rotateY(180deg);
+}
+
+.left {
+	opacity: 0.3;
+	width: 200px;
+	height: 200px;
+  transform: translateX(-100px) rotateY(-90deg);
+}
+
+.right {
+	background-image: url(../image/3.png);
+	background-color: black;
+	width: 200px;
+	height: 200px;
+  transform: translateX(300px) rotateY(90deg);
+}
+
+.top {
+	background-image: url(../image/4.png);
+	opacity: 0.3;
+	width: 400px;
+	height: 200px;
+  transform: translateY(-100px) rotateX(90deg);
+}
+
+.bottom {
+	background-image: url(../image/1.png);
+	width: 400px;
+	height: 200px;
+  transform: translateY(100px) rotateX(-90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cube {
+    animation: none;
+    transform: rotate3d(1, 1, 0, 45deg);
+  }
+}
+
+.container:hover .front {
+  transform: translateZ(200px);
+}
+.container:hover .top {
+  transform: rotateX(-270deg) translateZ(200px) ;
+}
